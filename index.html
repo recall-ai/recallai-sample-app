@@ -3,17 +3,58 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta 
+      http-equiv="Content-Security-Policy" 
+      content="
+        connect-src https://staging.recall.ai/; 
+        default-src 'self'; 
+        script-src 'self'; 
+        style-src 'self' 'unsafe-inline'
+      "
+    >
     <link href="./styles.css" rel="stylesheet">
     <title>Hello World!</title>
+    <style>
+      tr {
+        vertical-align: top;
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
-    <!-- You can also require other files to run in this process -->
+    <div id="apiTokenInputStep">
+      <h2>API Token:</h2>
+      <input id="apiTokenInput" placeholder="API Token">
+      <button id="apiTokenValidateBtn">Validate</button>
+    </div>
+    <div id="recordMeetingStep" style="display: none;">
+      <h2>Record a meeting</h2>
+      <div>
+        <input id="meetingUrlInput" placeholder="Meeting URL">
+        <button id="recordMeetingBtn">Record Meeting</button>
+      </div>
+    </div>
+    <div id="botInCallStep" style="display: none;">
+      <button id="removeBotBtn">Remove Bot from Meeting</button>
+      <table id="botStatusTable">
+        <tr>
+          <th>Bot ID</th>
+          <td><input id="botIdInput" readonly></td>
+        </tr>
+        <tr>
+          <th>Bot Status</th>
+          <td><input id="botStatusInput" readonly></td>
+        </tr>
+        <tr>
+          <th>Transcription</th>
+          <td><textarea id="transcriptionTextarea" readonly></textarea></td>
+        </tr>
+        <tr>
+          <th>Video URL</th>
+          <td><input id="botVideoUrlInput" readonly></td>
+        </tr>
+      </table>
+    </div>
     <script src="./renderer.js"></script>
   </body>
 </html>
