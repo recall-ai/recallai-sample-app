@@ -1,4 +1,4 @@
-# electron-quick-start
+# recallai-sample-app
 
 ## To Use
 
