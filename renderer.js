@@ -1,4 +1,4 @@
-const apiBasePath = "https://staging.recall.ai/api/v1"
+const apiBasePath = "http://api.recall.ai/api/v1"
 
 const apiTokenInputStep = document.getElementById("apiTokenInputStep")
 const recordMeetingStep = document.getElementById("recordMeetingStep")
