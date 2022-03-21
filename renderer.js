@@ -123,7 +123,7 @@ function startPollingBotStatus(token, botId) {
         if (!data) return;
         botVideoUrlInput.value = data.video_url;
 
-        const mostRecentStatus = data.events.sort((a, b) => {
+        const mostRecentStatus = data.status_changes.sort((a, b) => {
             return new Date(b.created_at) - new Date(a.created_at)
         })[0]
         if (!mostRecentStatus) return;
